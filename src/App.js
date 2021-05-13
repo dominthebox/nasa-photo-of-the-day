@@ -3,8 +3,8 @@ import "./App.css";
 import APOD from "./Components/APOD_Container";
 import Description from "./Components/Description_Container";
 import axios from "axios";
-import nasaData from "./Components/NASA-DATA";
-// https://api.nasa.gov/planetary/apod  <-- end point
+import { BASE_URL, API_KEY } from "./Components/NASA-DATA";
+// https://api.nasa.gov/planetary/apod?api_key=X6aUVNjllAgcZuv6MDIMdUVUTC9l5Wx5SHjqGXPi <-- end point
 
 const today = new Date();
 const initialDate = today.toJSON().slice(0,10);
@@ -14,13 +14,7 @@ function App() {
   const [date, setDate] = useState(initialDate);
   
   useEffect(() => {
-    axios.get("", {
-      baseURL: nasaData.BASE_URL,
-      params: {
-        api_key: nasaData.API_KEY,
-        date: date
-      }
-    })
+    axios.get(`${BASE_URL}?api_key=${API_KEY}`)
     .then(res => {
       setData(res.data);
     });
