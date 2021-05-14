@@ -7,7 +7,9 @@ const StyledTitle = styled.h2`
 const StyledExplanation = styled.p`
     color: whitesmoke;
 `
-
+const StyledDate = styled.h4`
+    color: skyblue;
+`
 
 export default function Description({ data }) {
     const {title, date, explanation, media_type} = data;
@@ -16,9 +18,9 @@ export default function Description({ data }) {
             <StyledTitle>
                 {title}
             </StyledTitle>
-            <h4>
+            <StyledDate>
                 <span className="media-type">{media_type}</span> for the date of: {date}
-            </h4>
+            </StyledDate>
             <StyledExplanation>
                 {explanation}
             </StyledExplanation>
