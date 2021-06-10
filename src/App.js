@@ -4,9 +4,21 @@ import axios from 'axios';
 import APOD from './Components/APOD_Container';
 import Description from './Components/Description_Container';
 import { BASE_URL, API_KEY } from './Components/NASA-DATA';
+import styled from 'styled-components';
 
 const today = new Date();
 const initialDate = today.toJSON().slice(0,10);
+
+const StyledInput = styled.input`
+  margin-bottom: 3.5rem;
+  margin-top: 2rem;
+  border-radius: 3rem;
+  border-color: blueviolet;
+  border-width: 0.5rem;
+`
+const StyledDiv = styled.div`
+    background-color: #404040;
+`
 
 function App() {
   const [data, setData] = useState(null);
@@ -24,11 +36,11 @@ function App() {
     }, [date]);
 
   return (
-    <div className="App">
+    <StyledDiv className="App">
       {data && <APOD imageURL={data.url} altText={data.title} />}
       {data && <Description data={data} />}
-      <input type='data' max={initialDate} onChange={e => setDate(e.target.value)}/>
-    </div>
+      <StyledInput type='data' max={initialDate} onChange={e => setDate(e.target.value)}/>
+    </StyledDiv>
   );
 }
 
